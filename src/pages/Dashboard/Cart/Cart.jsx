@@ -1,6 +1,6 @@
 import React from 'react';
 import useCart from '../../../hooks/useCart';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
@@ -85,7 +85,7 @@ const Cart = () => {
                                     <button
                                         onClick={() => handleDelete(item._id)}
                                         className="btn btn-ghost btn-lg">
-                                        <FaTrash className='text-red-600'></FaTrash>
+                                        <FaTrashAlt className='text-red-600'></FaTrashAlt>
                                     </button>
                                 </th>
                             </tr>)
