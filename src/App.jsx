@@ -6,8 +6,7 @@ function App() {
 
   return (
     <>
-      <button className='btn btn-success'>helloo</button>
-      
+      <h1>This Is App</h1>
     </>
   )
 }
