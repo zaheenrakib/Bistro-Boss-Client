@@ -60,7 +60,7 @@ import AdminRoute from "./AdminRoute";
         //Admin only Routes
         {
           path: 'additems',
-          element: <AddItems></AddItems>
+          element: <AdminRoute><AddItems></AddItems></AdminRoute>
         },
         {
           path:'users',
