@@ -39,7 +39,7 @@ const ManageItems = () => {
     }
 
     if (loading) {
-        return <div className='flex justify-center items-center h-screen'><span className="loading loading-dots loading-lg"></span></div>
+        return <div className='flex justify-center items-center h-screen'><span className="loading loading-dots bg-green-500 loading-lg"></span></div>
     }
 
     return (

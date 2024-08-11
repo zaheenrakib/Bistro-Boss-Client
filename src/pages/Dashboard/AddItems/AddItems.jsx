@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import { useForm } from 'react-hook-form';
 import { FaUtensils } from 'react-icons/fa';
@@ -12,8 +12,10 @@ const AddItems = () => {
     const { register, handleSubmit ,reset} = useForm()
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [loading , setLoading] = useState()
     const onSubmit = async (data) => {
         console.log(data)
+        setLoading(true);
         // image upload to imgbb and then get an url
         const imageFile = {image: data.image[0]}
         const res = await axiosPublic.post(image_hosting_api, imageFile ,{
@@ -35,6 +37,7 @@ const AddItems = () => {
             console.log(menuRes.data)
             if(menuRes.data.insertedId){
                 // show success popup
+                setLoading(false);
                 reset();
                 Swal.fire({
                     position: "top-end",
@@ -47,6 +50,9 @@ const AddItems = () => {
             }
         }
         console.log('with img url',res.data);
+    }
+    if(loading){
+        return  <div className='flex justify-center items-center h-screen'><span className="loading loading-dots bg-green-500 loading-lg"></span></div>
     }
     return (
         <div>
@@ -102,10 +108,10 @@ const AddItems = () => {
 
 
                     <div className='form-control w-full my-6'>
-                        <input {...register('image' , { required: true })} type="file" className="file-input w-full max-w-xs" />
+                        <input {...register('image' , { required: true })} type="file" className="file-input bg-orange-400 w-full max-w-xs" />
                     </div>
 
-                    <button className='btn mb-6'>
+                    <button className='btn mb-6 btn-success text-white'>
                         Add Item <FaUtensils className='ml-2'></FaUtensils>
                     </button>
                 </form>

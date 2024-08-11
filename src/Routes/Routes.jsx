@@ -16,7 +16,7 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
-
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const router = createBrowserRouter([
   {
@@ -62,8 +62,7 @@ export const router = createBrowserRouter([
       //Admin only Routes
       {
         path: 'additems',
-        element: <AddItems></AddItems>
-        // element: <AdminRoute><AddItems></AddItems></AdminRoute>
+        element: <AdminRoute><AddItems></AddItems></AdminRoute>
       },
       {
         path: 'manageItems',
@@ -72,7 +71,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateItem/:id',
         element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        loader: ({ params }) => fetch(`https://bistro-boss-server-phi-kohl.vercel.app/menu/${params.id}`)
       },
       {
         path: 'users',
